@@ -1,0 +1,17 @@
+---
+name: deploy cloud infra
+
+on:
+  push:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: deploy
+        run: |
+            echo "Deploying..."
+        env:
+          SENSITIVE_CLOUD_KEY: ${{secrets.SENSITIVE_CLOUD_KEY}}
+          SENSITIVE_SSH_KEY: ${{secrets.SENSITIVE_SSH_KEY}}
