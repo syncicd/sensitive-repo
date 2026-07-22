@@ -1,0 +1,16 @@
+name: Log Issue Author
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  log-user-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Actor and Sender
+        run: |
+          echo "The workflow run was initiated by: $ACTOR"
+          echo "The webhook event was sent by: $SENDER"
+        env:
+          ACTOR: ${{ github.actor }}
+          SENDER: ${{ github.event.sender.login }}
